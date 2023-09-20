@@ -1,8 +1,12 @@
 import requests
 import re
+import os
 
-# Your webhook URL
-webhook_url = "redacted"
+# Get the webhook URL from the environment variable
+webhook_url = os.environ.get("WEBHOOK_URL")
+
+# Get the URL from the environment variable
+url = os.environ.get("SITE_URL")
 
 def get_site_rank(url):
     response = requests.get(url)
@@ -60,8 +64,6 @@ def send_webhook_message(msg):
         print("Error sending webhook message:", e)
 
 if __name__ == "__main__":
-    url = "https://retroachievements.org/user/Lahey"
-    
     try:
         current_rank = get_site_rank(url)
         
