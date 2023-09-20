@@ -6,6 +6,6 @@ build:
 	docker build -t $(IMAGE_NAME) .
 
 run:
-	docker run -e WEBHOOK_URL=$(WEBHOOK_URL) -e SITE_URL=$(SITE_URL) $(IMAGE_NAME)
+	docker run -e WEBHOOK_URL=$(WEBHOOK_URL) -e SITE_URL=$(SITE_URL) -v $(PWD)/last_rank.txt:/app/last_rank.txt $(IMAGE_NAME)
 
 .PHONY: build run
